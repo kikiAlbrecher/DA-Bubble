@@ -76,7 +76,7 @@ export class UserManagementHelperService {
    */
   private async createNewUser(context: UserSharedService, userDocRef: any, user: any) {
     await setDoc(userDocRef, {
-      channelIds: { 'ClExENSKqKRsmjb17kGy': true },
+      channelIds: { 'LRb3MxFzQLPxAcpav7k4': true },
       uid: user.uid,
       email: user.email,
       name: user.displayName,
@@ -180,7 +180,7 @@ export class UserManagementHelperService {
    */
   private setGuestUserData(userDocRef: any, user: any) {
     return setDoc(userDocRef, {
-      channelIds: { 'ClExENSKqKRsmjb17kGy': true },
+      channelIds: { 'LRb3MxFzQLPxAcpav7k4': true },
       uid: user.uid,
       email: "",
       name: 'Gast',

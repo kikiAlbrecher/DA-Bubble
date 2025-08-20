@@ -201,7 +201,7 @@ export class SideNavComponent implements OnInit, OnChanges, OnDestroy {
    * Selects and emits the default channel.
    */
   defaultChannel() {
-    const defaultChannel = this.channels.find(c => c.channelId === 'ClExENSKqKRsmjb17kGy') || this.channels[0];
+    const defaultChannel = this.channels.find(c => c.channelId === 'LRb3MxFzQLPxAcpav7k4') || this.channels[0];
 
     if (defaultChannel) {
       this.selectedChannelId = defaultChannel.channelId;

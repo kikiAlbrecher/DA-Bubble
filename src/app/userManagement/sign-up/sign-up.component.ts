@@ -83,7 +83,7 @@ export class SignUpComponent {
         email: this.signUpForm.value.email ?? '',
         password: this.signUpForm.value.password ?? '',
         status: false,
-        channelIds: { 'ClExENSKqKRsmjb17kGy': true },
+        channelIds: { 'LRb3MxFzQLPxAcpav7k4': true },
         picture: ''
       };
       this.router.navigate(['/pickavatar']);
