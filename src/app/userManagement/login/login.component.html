@@ -1,0 +1,33 @@
+<section class="login-section">
+    <form [formGroup]="logInForm" (ngSubmit)="submitLogData()" class="login-container">
+        <span class="login-header">Anmeldung</span>
+        <span class="login-text">Wir empfehlen dir, die E-Mail-Adresse zu nutzen, die du bei der Arbeit
+            verwendest.</span>
+        <div class="input-container">
+            <div class="input-field-container">
+                <input class="input-field mail" type="text" formControlName="email">
+                <img class="input-field-image" src="assets/img/mail.svg" alt="">
+                @if (shared.inputData){<span class="error-message">* E-Mail oder Passwort falsch</span>}
+            </div>
+            <div class="input-field-container">
+                <input class="input-field password" type="password" formControlName="password">
+                <img class="input-field-image" src="assets/img/lock.svg" alt="">
+                @if (shared.inputData){<span class="error-message">* E-Mail oder Passwort falsch</span>}
+            </div>
+        </div>
+        <a class="no-passwort" routerLink="/reset-password">Passwort vergessen?</a>
+        <div class="or-container">
+            <div class="line"></div>
+            <span class="or-text">ODER</span>
+            <div class="line"></div>
+        </div>
+        <div (click)="shared.googleLogIn()" class="google-login">
+            <img class="google-img" src="assets/img/Google.png" alt="">
+            <span class="google-text">Anmelden mit Google</span>
+        </div>
+        <div class="login-button-container">
+            <button type="submit" class="login-button button-log-in">Anmelden</button>
+            <div (click)="shared.guestLogIn()" class="login-button button-guest">Gäste-Login</div>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,99 @@
+<section class="main-content">
+    <div class="section-content main-section">
+        <div class="header">
+            <app-logo [isMobile]="isMobile" [showMainChat]="showMainChat"
+                (backToSideNavClick)="onBackToSideNav()"></app-logo>
+            <app-searchbar class="header-searchbar" (selectUser)="onUserSelected($event)"
+                (selectChannel)="onChannelSelected($event)"></app-searchbar>
+            <app-user-header></app-user-header>
+        </div>
+
+        <div class="main-components" [class.workspace-closed]="!(shared.workspaceOpen$ | async)"
+            [class.threads-open]="(shared.threadsVisible$ | async)">
+
+            @if (!isMobile || (isMobile && !showMainChat && !showAddChannelDialog && !showProfile)) {
+            <app-side-nav [isMobile]="isMobile" [userHasMadeSelection]="userHasMadeSelection"
+                (selectChannel)="onChannelSelected($event)" (selectUser)="onUserSelected($event)"
+                (addChannel)="openDialogAddChannel()" [devspaceOpen]="showDevspace" (openDevspace)="onOpenDevspace()"
+                (closeDevspace)="onCloseDevspace()" (toggleDevspaceM)="toggleDevspaceMobile()"
+                [showAddChannelDialog]="showAddChannelDialog" [selectedUser]="selectedUser"
+                [selectedChannel]="selectedChannel" [clearSelectionTrigger]="!selectedUser && !selectedChannel"
+                (searchMobile)="onSearchStarted()" (mainChatOpened)="showMainChat = true">
+            </app-side-nav>
+            }
+
+            @if (!isMobile || (isMobile && showMainChat && (selectedChannel || selectedUser) && !editChannel)) {
+            <app-main-chat (addMember)="openDialogAddMember($event)" (showUserProfile)="openProfile()"
+                (editChannel)="openDialogEditChannel($event)" (members)="openMembers($event)"
+                (selectedUserChange)="onSelectedUserChanged($event)" (userClicked)="onUserSelected($event)"
+                (channelClicked)="onChannelSelected($event)" [isMobile]="isMobile" [selectedChannel]="selectedChannel"
+                [selectedUser]="selectedUser" [sideNavOpen]="true" [showAddMemberDialog]="showAddMemberDialog"
+                [isShowMembersOverlayVisible]="showMembers" [devspace]="showDevspace"
+                (searchMail)="onSearchMail($event)">
+            </app-main-chat>
+            }
+
+            @if (shared.threadsVisible$ | async) {
+            <app-threads></app-threads>
+            }
+        </div>
+
+        @if (showAddChannelDialog) {
+        <app-dialog-add-channel (close)="closeDialogAddChannel()" (save)="createChannel($event)">
+        </app-dialog-add-channel>
+        }
+
+        @if (addChannelMember) {
+        <app-dialog-add-channel-member [validUsers]="users" [currentChannelId]="selectedChannel?.channelId"
+            (close)="closeAddChannelMember()" (save)="saveAddChannelMember($event)">
+        </app-dialog-add-channel-member>
+        }
+
+        @if (editChannel) {
+        <div class="dialog-add-channel dialog-edit-channel" (click)="$event.stopPropagation()"
+            [ngStyle]="!isMobileEdit ? { top: editChannelPosition.top + 'px', left: editChannelPosition.left + 'px' } : {}">
+            <app-dialog-edit-channel [selectedChannel]="selectedChannel" (close)="closeDialogEditChannel()"
+                (saveName)="saveEditChannel($event)" (saveDescription)="saveEditChannel($event)"
+                (userLeftChannel)="updateChannelMember($event)" [position]="editChannelPosition"
+                [style.top.px]="editChannelPosition.top" [style.left.px]="editChannelPosition.left"
+                style="position: fixed; z-index: 999;" [isMobileEdit]="isMobileEdit" (click)="$event.stopPropagation()"
+                (openUserProfile)="onOpenUserProfile($event)" (openAddUser)="openDialogAddMemberMobile()">
+            </app-dialog-edit-channel>
+        </div>
+        }
+
+        @if (showMembers) {
+        <app-dialog-show-channel-members [users]="users" [selectedUserId]="selectedUser?.id ?? null"
+            (close)="closeDialogShowMembers()" (openAddMembers)="openDialogAddMember($event)"
+            (userClicked)="onOpenUserProfile($event)" [position]="showMembersPosition"
+            [style.top.px]="showMembersPosition.top" [style.left.px]="showMembersPosition.left"
+            style="position: fixed; z-index: 400;">
+        </app-dialog-show-channel-members>
+        }
+
+        @if (showAddMemberDialog) {
+        <app-dialog-add-member [validUsers]="users" [selectedChannel]="selectedChannel" (close)="closeDialogAddMember()"
+            (save)="saveAddMember($event)" [asOverlay]="!isMobileEditContext"
+            [class.bottom-drawer]="isMobileEditContext" [position]="addMemberPosition"
+            [style.top.px]="addMemberPosition.top" [style.left.px]="addMemberPosition.left"
+            style="position: fixed; z-index: 999;">
+        </app-dialog-add-member>
+        }
+
+        @if (statusMessage) {
+        <app-status-messages [statusMessage]="statusMessage" [statusMessageType]="statusMessageType">
+        </app-status-messages>
+        }
+
+        @if (showProfile) {
+        <div class="outside-overlay overlay-index" (click)="showProfile = false">
+            <div class="content-restriction">
+                <app-user-profile (click)="$event.stopPropagation()" [user]="selectedUser"
+                    [actualUserId]="shared.actualUserID" (close)="showProfile = false"
+                    (sendMessage)="sendUserMessage($event)">
+                </app-user-profile>
+            </div>
+        </div>
+        }
+    </div>
+</section>

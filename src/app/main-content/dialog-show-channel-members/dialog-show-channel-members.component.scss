@@ -1,0 +1,82 @@
+@import './../../../styles/shared';
+
+.dialog-members {
+    @include dFlex($fd: column, $jc: flex-start);
+    position: fixed;
+    border-top-right-radius: 0;
+    width: 415px;
+    z-index: 400;
+
+    @media(max-width: 1000px) {
+        width: 300px;
+    }
+
+    @media(max-height: 664px) {
+        padding: 8px 8px 8px 20px;
+        gap: 8px;
+    }
+}
+
+.show-members-content {
+    @include dFlex($fd: column, $jc: flex-start, $ai: flex-start, $g: 15px);
+
+    .members-list {
+        padding-top: 20px;
+        max-height: 500px;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        @media (max-height: 904px) {
+            max-height: 40vh;
+        }
+
+        @media (max-height: 664px) {
+            max-height: 30vh;
+        }
+
+        @media (max-height: 528px) {
+            max-height: 100px;
+        }
+    }
+
+    .add-member-transfer {
+        padding: 12px 29px;
+        @include dFlex($jc: flex-start, $g: 15px);
+        border-radius: 100px;
+
+        @media (max-width: 1000px) {
+            margin-left: 25px;
+            padding: 12px;
+        }
+
+        @media (max-height: 664px) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        >svg {
+            height: 32px;
+            aspect-ratio: 1 / 1;
+        }
+
+        >.title {
+            @include fontNunito($size: 18px, $weight: 400);
+            text-align: left;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background: $background-purple;
+        }
+    }
+}
+
+h2 {
+    @media (max-width: 1000px) {
+        @include fontNunito($size: 20px, $weight: 700);
+    }
+}
+
+.h2-responsive {
+    @include fontNunito($size: 24px, $weight: 700);
+}

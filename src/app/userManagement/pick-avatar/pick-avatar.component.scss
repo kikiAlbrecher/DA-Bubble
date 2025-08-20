@@ -1,0 +1,218 @@
+@import './../../../styles/shared';
+
+.avatar-section {
+    height: 600px;
+    width: 550px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+}
+
+.avatar-container {
+    @include dFlex(column, center, center, 0);
+    position: relative;
+}
+
+.avatar-header {
+    @include fontNunito(40px, 700);
+    color: #444DF2;
+    margin: 30px 0;
+}
+
+.backarrow {
+    position: absolute;
+    top: 47px;
+    left: 28px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.avatar-big-image {
+    width: 168px;
+    height: 168px;
+    margin: 0 0 30px 0;
+}
+
+.name {
+    @include fontNunito(32px, 700);
+}
+
+.text-container {
+    width: 100%;
+    padding: 0 30px;
+    margin: 20px 0;
+
+    span {
+        @include fontNunito(18px, 400);
+    }
+}
+
+.avatar-images-container {
+    @include dFlex(row, space-between, center, 0px);
+    width: 100%;
+    padding: 0 30px;
+    position: relative;
+
+    img {
+        width: 65px;
+        height: 65px;
+        cursor: pointer;
+        padding: 3px;
+        border-radius: 50%;
+
+        &:hover {
+            background-color: #ECEEFE;
+        }
+    }
+}
+
+.next-container {
+    @include dFlex(row, end, center, 0px);
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 30px;
+
+    .next {
+        @include fontNunito(18px, 700);
+        padding: 10px 20px;
+        color: white;
+        border-radius: 25px;
+        text-decoration: none;
+    }
+
+    .next-on {
+        background-color: #444DF2;
+        cursor: pointer;
+    }
+
+    .next-off {
+        background-color: #686868;
+    }
+}
+
+.error-message {
+    position: absolute;
+    bottom: -20px;
+    left: 30px;
+    @include fontNunito(15px, 400);
+    color: red;
+}
+
+@media (max-width: 600px) {
+    .avatar-section {
+        width: 450px;
+    }
+
+    .avatar-header {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .avatar-section {
+        width: 310px;
+    }
+
+    .avatar-header {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .avatar-images-container {
+        padding: 10px;
+
+        img {
+            width: 48px;
+            height: 48px;
+        }
+    }
+
+    .backarrow {
+        top: 40px;
+        left: 18px;
+    }
+
+    .next-container {
+        margin-top: 15px;
+    }
+}
+
+@media (max-height: 800px) {
+    .avatar-section {
+        height: 520px;
+    }
+
+    .avatar-header {
+        font-size: 32px;
+    }
+
+    .avatar-big-image {
+        width: 135px;
+        height: 135px;
+    }
+
+    .avatar-big-image {
+        margin: 5px 0;
+    }
+
+    .avatar-images-container {
+        padding: 5px;
+    }
+
+    .next-container {
+        margin-top: 10px;
+
+        .next {
+            font-size: 16px;
+        }
+
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .avatar-section {
+        height: 350px;
+        width: 450px;
+    }
+
+    .avatar-header {
+        margin: 5px 0;
+    }
+
+    .avatar-big-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .name {
+        font-size: 24px;
+    }
+
+    .text-container {
+        margin: 10px 0;
+    }
+
+    .avatar-images-container {
+        justify-content: space-around;
+        padding: 0;
+
+        img {
+            width: 55px;
+            height: 55px;
+        }
+    }
+
+    .next-container {
+        margin-top: 5px;
+    }
+}
+
+@media (orientation: portrait) and (max-height: 700px) {
+    .avatar-section {
+        height: 500px;
+    }
+
+    .avatar-header {
+        margin: 22px 0;
+    }
+}

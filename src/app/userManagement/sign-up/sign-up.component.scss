@@ -1,0 +1,201 @@
+@import './../../../styles/shared';
+
+.sign-up-section {
+    height: 530px;
+    width: 450px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+}
+
+.login-container {
+    @include dFlex(column, center, center, 0);
+    position: relative;
+}
+
+.login-header {
+    @include fontNunito(40px, 700);
+    color: #444DF2;
+    margin: 30px 0;
+}
+
+.backarrow {
+    position: absolute;
+    top: 47px;
+    left: 28px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.login-text {
+    @include fontNunito(18px, 400);
+    text-align: center;
+    margin: 0 20px
+}
+
+.input-field-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-field-image {
+    height: 20px;
+    width: auto;
+    position: absolute;
+    top: 10px;
+    left: 25px;
+}
+
+.input-container {
+    @include dFlex(column, center, center, 30px);
+    width: 100%;
+    padding: 30px 20px;
+
+    .input-field {
+        width: 100%;
+        height: 40px;
+        border-radius: 30px;
+        border: none;
+        background-color: #ECEEFE;
+        padding: 0 15px 0 60px;
+        @include fontNunito(16px, 500);
+        color: #686868;
+    }
+}
+
+.error-message {
+    position: absolute;
+    bottom: -20px;
+    left: 5px;
+    @include fontNunito(15px, 400);
+    color: red;
+}
+
+.error-message-privacy {
+    position: absolute;
+    bottom: -20px;
+    left: 25px;
+    @include fontNunito(15px, 400);
+    color: red;
+}
+
+.privacy-container {
+    width: 100%;
+    padding: 0 20px;
+    @include dFlex(row, baseline, center, 10px);
+    position: relative;
+
+    .privacy-checkbox-container {
+        padding: 5px;
+        border-radius: 50%;
+        @include dFlex(row, center, center, 10px);
+
+        .privacy-checkbox {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #797EF3;
+            border-radius: 3px;
+            background-color: transparent;
+            cursor: pointer;
+
+            &:checked {
+                background-color: #797EF3;
+                border-color: #797EF3;
+            }
+        }
+
+        &:hover {
+            background-color: #ECEEFE;
+        }
+    }
+
+    .privacy-text {
+        @include fontNunito(16px, 400);
+    }
+
+    a {
+        color: #797EF3;
+    }
+}
+
+.next-container {
+    @include dFlex(row, end, center, 0px);
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 30px;
+
+    .next {
+        @include fontNunito(18px, 700);
+        padding: 10px 20px;
+        color: white;
+        border-radius: 25px;
+        text-decoration: none;
+    }
+
+    .next-on {
+        background-color: #444DF2;
+        cursor: pointer;
+    }
+
+    .next-off {
+        background-color: #686868;
+    }
+}
+
+@media (max-width: 500px) {
+    .sign-up-section {
+        width: 350px;
+    }
+
+    .login-header {
+        margin: 10px 0;
+        font-size: 32px;
+    }
+
+    .backarrow {
+        left: 10px;
+        top: 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    .sign-up-section {
+        width: 310px;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .sign-up-section {
+        height: 350px;
+    }
+
+    .login-header {
+        margin: 6px 0;
+        font-size: 32px;
+    }
+
+    .backarrow {
+        left: 10px;
+        top: 20px;
+    }
+
+    .input-container {
+        padding: 15px 20px;
+        gap: 10px;
+    }
+
+    .next-container {
+        margin-top: 0;
+
+        .next {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (orientation: portrait) and (max-height: 700px) {
+    .sign-up-section {
+        height: 500px;
+    }
+}

@@ -1,0 +1,32 @@
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()" class="write-message-section">
+    <div #editor contenteditable="true" class="editable-input"
+        (input)="onContentInput(); mentionComponent?.saveCursorPosition()"
+        (click)="onEditorClick(); mentionComponent?.saveCursorPosition()"
+        (keyup)="mentionComponent?.saveCursorPosition()" (keydown)="onEditorKeyDown($event)"
+        [attr.placeholder]="placeHolderText">
+    </div>
+    <app-mention *ngIf="editorNativeElement" [users]="users" [channels]="channels"
+        [targetInputElement]="editorNativeElement" contextClass="in-write-message"
+        (mentionSelected)="onMentionSelected($event)">
+    </app-mention>
+    <div class="buttons-container">
+        <div class="buttons-left-container">
+            <div class="buttons-left">
+                <div class="add-emoji-container">
+                    <div (click)="toggleEmojiOverlay()" class="smiley" src="assets/icons/smiley-button.svg" alt="">
+                    </div>
+                    @if(emojiOverlay || (this.mode === 'thread' && emojiThreadOverlay)) {
+                    <div class="emoji-picker-container">
+                        <emoji-mart (emojiSelect)="addEmoji($event)" [showPreview]="false" [enableSearch]="false"
+                            [isNative]="true"></emoji-mart>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="buttons-left">
+                <div (click)="toggleMentionOverlay()" class="at"></div>
+            </div>
+        </div>
+        <button type="submit" class="send-button" src="assets/icons/send.svg" alt=""></button>
+    </div>
+</form>

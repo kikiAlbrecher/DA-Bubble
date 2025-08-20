@@ -1,0 +1,65 @@
+@import './../../../styles/shared';
+
+.user-header-section {
+    @include dFlex(row, center, center, 20px);
+    width: 100%;
+
+    span {
+        @include fontNunito(32px, 700);
+        color: black;
+        text-align: left;
+        white-space: nowrap;
+
+        @media(max-width: 1200px) {
+            display: none;
+        }
+    }
+
+    .user-header-img {
+        width: 70px;
+        height: 70px;
+
+        @media(max-width: 1000px) {
+            width: 50px;
+            height: 50px;
+        }
+
+        @media(max-height: 480px) {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .user-header-icon {
+        width: 30px;
+        height: 30px;
+
+        @media(max-width: 1200px) {
+            display: none;
+        }
+    }
+
+    &:hover span {
+        color: #797EF3;
+    }
+
+    @media(max-width: 1200px) {
+        gap: 0;
+    }
+
+    @media(max-width: 1000px) {
+        padding-right: 16px;
+    }
+}
+
+.edit-user {
+    @include dFlex(row, center, center, 20px);
+    position: relative;
+}
+
+.edit-user-overlay {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 1000;
+}

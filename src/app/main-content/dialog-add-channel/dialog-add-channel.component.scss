@@ -1,0 +1,74 @@
+@import './../../../styles/shared';
+
+* {
+    box-sizing: border-box;
+}
+
+.overlay-content {
+    max-width: 1920px;
+    width: 100%;
+    @include dFlex();
+    z-index: 300;
+}
+
+.outside-overlay-individual {
+    @media(max-width: 1000px) {
+        @include dFlex($fd: column, $jc: flex-start, $ai: flex-start);
+        background: $white;
+        height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+.dialog-add-channel {
+    background: $white;
+    padding: 40px;
+    border-radius: 30px;
+    width: clamp(300px, 80%, 700px);
+    max-width: 100%;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    @include dFlex($fd: column, $jc: flex-start, $ai: flex-start, $g: 20px);
+    z-index: 999;
+
+    @media (max-width: 1000px) {
+        padding: 40px 20px;
+    }
+
+    >.add-channel-subheadline {
+        @include fontNunito($size: 18px, $weight: 400);
+
+        @media(max-width: 1000px) {
+            @include fontNunito($size: 17px, $weight: 400);
+        }
+    }
+}
+
+.dialog-add-channel-individual {
+    overflow-x: hidden;
+
+    @media (max-width: 1000px) {
+        width: 100%;
+        border-radius: 0;
+        gap: 25px;
+        box-shadow: none;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+.add-headline {
+    @include dFlex($jc: space-between);
+    width: 100%;
+
+    >h2 {
+        @include fontNunito($size: 24px, $weight: 700);
+
+        @media(max-height: 400) and (max-width: 400px) {
+            @include fontNunito($size: 20px, $weight: 600);
+        }
+    }
+}
+
+.components-width {
+    width: 100%;
+}

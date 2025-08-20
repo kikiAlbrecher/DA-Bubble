@@ -1,0 +1,152 @@
+@import './../../../styles/shared';
+
+.dialog-add-member {
+    @media (max-width: 1000px) {
+        bottom: 0;
+        left: 3px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        width: 100%;
+    }
+
+    @media(max-height: 552px) {
+        padding-top: 20px;
+        padding-bottom: 16px;
+        gap: 8px;
+    }
+}
+
+.out-ov-for-below {
+    @media (max-width: 1000px) {
+        @include dFlex($fd: column, $jc: flex-end);
+    }
+}
+
+.closing-sign {
+    display: none;
+
+    @media (max-width: 1000px) {
+        @include dFlex();
+        width: 100%;
+
+        .rectangle {
+            width: 62px;
+            height: 6px;
+            border-radius: 23px;
+            background: #D9D9D9;
+        }
+    }
+
+    @media(max-height: 552px) {
+        display: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.slide-out {
+    animation: slideOut 300ms ease-out forwards;
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+.add-member-options {
+    @include dFlex($fd: column, $jc: flex-start, $ai: flex-start, $g: 20px);
+    width: 100%;
+
+    @media(max-height: 552px) {
+        gap: 8px;
+    }
+
+    >.option-block {
+        @include dFlex($fd: column, $jc: flex-start, $ai: flex-start, $g: 20px);
+        width: 100%;
+
+        >.option {
+            @include dFlex($jc: flex-start, $g: 20px);
+
+            >input {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            >label {
+                @include fontNunito($size: 18px, $weight: 400);
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    >.option-block-channel {
+        gap: 8px;
+    }
+}
+
+.chosen-channel {
+    padding: 0;
+    @include fontNunito($size: 18px, $weight: 400);
+    color: $purple;
+}
+
+.channel-suggestions {
+    @include dFlex($fd: column, $jc: flex-end, $ai: flex-start);
+    padding: 20px 20px 20px 0;
+    border: 1px solid $grey;
+    border-radius: 0 30px 30px 30px;
+    max-height: 500px;
+    overflow: hidden;
+    z-index: 80;
+    position: relative;
+    background: $white;
+    margin-left: 33px;
+
+    &:focus-within {
+        border-color: $background-purple;
+    }
+
+    @media(max-height: 1000px) {
+        max-height: 300px;
+    }
+
+    @media(max-height: 728px) {
+        max-height: 150px;
+    }
+
+    @media(max-height: 552px) {
+        max-height: 100px;
+        padding: 8px 20px 8px 0;
+    }
+
+    @media(max-height: 552px) and (max-width: 400px) {
+        max-height: 90px;
+    }
+
+    @media(max-width: 600px) {
+        width: auto;
+    }
+}
+
+.channel-entry {
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    @include fontNunito($size: 18px, $weight: 400);
+
+    &:hover {
+        background: $background-purple;
+    }
+}

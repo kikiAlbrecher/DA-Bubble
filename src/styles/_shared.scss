@@ -1,0 +1,39 @@
+@import '@angular/cdk/overlay-prebuilt.css';
+
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./../assets/fonts/nunito-v31-latin-regular.woff2') format('woff2');
+}
+
+@mixin dFlex($fd: row, $jc: center, $ai: center, $g: 0) {
+  display: flex;
+  flex-direction: $fd;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $g;
+}
+
+@mixin fontNunito($size, $weight) {
+  font-family: 'Nunito';
+  font-size: $size;
+  font-weight: $weight;
+}
+
+$white: #FFFFFF;
+
+$purple: #444DF2;
+
+$light-purple: #ADB0D9;
+
+$background-purple: #ECEEFE;
+
+$purple-hover: #535AF1;
+
+$grey: #686868;
+
+$red: #E61C40;
+
+$green: #92C83E;

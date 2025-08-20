@@ -1,0 +1,388 @@
+@import './../styles/shared';
+
+.app-wrapper {
+    background-color: #ECEEFE;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.header {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.overlay {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 550;
+    @include dFlex();
+}
+
+.overlay-user-detail {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 550;
+    @include dFlex(column, center, center, 0px);
+}
+
+.main-content {
+    flex: 1;
+    width: 100%;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+}
+
+.logo-container {
+    position: absolute;
+    top: 75px;
+    left: 75px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.logo-image {
+    width: 70px;
+    height: 70px;
+}
+
+.logo-name {
+    height: 24px;
+    width: auto;
+}
+
+.create-account-container {
+    position: absolute;
+    top: 75px;
+    right: 75px;
+    @include dFlex(column, center, center, 20px);
+}
+
+.create-account-text {
+    @include fontNunito(18px, 400);
+    color: black;
+}
+
+.create-account-link {
+    @include fontNunito(18px, 400);
+    color: #797EF3;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+        color: #444DF2;
+        border: 1px solid #444DF2;
+        border-radius: 30px;
+    }
+}
+
+@media (pointer: coarse) {
+    .create-account-link {
+        border: 1px solid #797EF3;
+        border-radius: 25px;
+    }
+}
+
+.account-success {
+    background-color: #444DF2;
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    width: 500px;
+    height: 100px;
+    @include dFlex(column, center, center, 0);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+
+    span {
+        @include fontNunito(36px, 700);
+        color: white;
+
+    }
+}
+
+.mail-success {
+    background-color: #444DF2;
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    width: 430px;
+    height: 100px;
+    @include dFlex(row, center, center, 10px);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+
+    img {
+        width: 30px;
+        height: auto;
+    }
+
+    span {
+        @include fontNunito(36px, 700);
+        color: white;
+
+    }
+}
+
+.slide-in {
+    animation: slide-in 0.3s both;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.slide-out {
+    animation: slide-out 0.3s forwards;
+}
+
+@keyframes slide-out {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(200%);
+    }
+}
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    @include dFlex(row, center, center, 0px);
+}
+
+.footer-container {
+    @include dFlex(row, center, center, 16px);
+
+    a {
+        @include fontNunito(18px, 400);
+        color: #797EF3;
+    }
+}
+
+.fail-message-container {
+    height: 200px;
+    width: 300px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    @include dFlex(row, center, center, 0);
+    @include fontNunito(18px, 400);
+    text-align: center;
+    padding: 2%;
+}
+
+@media (max-width: 1200px) and (orientation: landscape) {
+    .logo-name {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+    .logo-container {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+    }
+
+    .logo-image {
+        width: 56px;
+        height: 56px;
+    }
+
+    .create-account-container {
+        gap: 10px;
+        top: 25px;
+        right: 25px;
+        bottom: auto;
+        left: auto;
+    }
+
+    .create-account-text {
+        @include fontNunito(16px, 400);
+    }
+
+    .create-account-link {
+        @include fontNunito(16px, 400);
+        border: 1px solid #797EF3;
+        border-radius: 25px;
+    }
+
+    footer {
+        width: 100%;
+        position: absolute;
+        bottom: 20px;
+        @include dFlex(row, center, center, 0px);
+    }
+}
+
+@media (max-width: 800px) {
+    .account-success {
+        right: 10%;
+        width: 300px;
+        height: 80px;
+
+        span {
+            @include fontNunito(24px, 700);
+        }
+    }
+
+    .mail-success {
+        right: 10%;
+        width: 280px;
+        height: 70px;
+
+        img {
+            width: 24px;
+            height: auto;
+        }
+
+        span {
+            @include fontNunito(24px, 700);
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-width: 950px) {
+    .logo-name {
+        display: none;
+    }
+
+    .footer-container {
+        width: 98%;
+        align-items: end;
+        flex-direction: column;
+        gap: 6px;
+
+        a {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (orientation: portrait) {
+
+    .logo-container {
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%)
+    }
+
+    .logo-name {
+        display: none;
+    }
+
+    .create-account-container {
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+        right: auto;
+        gap: 10px;
+    }
+
+    .create-account-text {
+        @include fontNunito(18px, 400);
+    }
+
+    .create-account-link {
+        @include fontNunito(18px, 400);
+        border: 1px solid #797EF3;
+        border-radius: 25px;
+    }
+
+    footer {
+        width: 100%;
+        position: absolute;
+        bottom: 20px;
+        @include dFlex(row, center, center, 0px);
+    }
+}
+
+@media (orientation: portrait) and (max-height: 950px) {
+    .header {
+        position: static;
+    }
+
+    .logo-container {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%)
+    }
+
+    .logo-image {
+        width: 56px;
+        height: 56px;
+    }
+
+    .logo-name {
+        display: none;
+    }
+
+    .create-account-container {
+        bottom: 52px;
+    }
+
+    .create-account-text {
+        @include fontNunito(16px, 400);
+    }
+
+    .create-account-link {
+        @include fontNunito(16px, 400);
+    }
+
+    footer {
+        bottom: 15px;
+    }
+
+    .footer-container {
+        a {
+            @include fontNunito(16px, 400);
+        }
+    }
+}

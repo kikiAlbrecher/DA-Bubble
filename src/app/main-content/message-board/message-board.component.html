@@ -1,0 +1,61 @@
+<section #messageContainer class="custom-scrollbar message-board">
+    @for (groupItem of sharedMessages.groupedMessageDates; track $index) {
+    <div class="date-border">
+        <div class="border-line"></div>
+        <span class="border-text">{{ groupItem }}</span>
+        <div class="border-line"></div>
+    </div>
+    @for (item of sharedMessages.groupedMessages[groupItem]; track $index) {
+    @if (item.user === sharedUser.actualUserID) {
+    <app-own-message [message]="item" [ngClass]="{'highlighted': item.id === sharedMessages.highlightedMessageId}"
+        class="messages-container"></app-own-message>
+    }
+    @else {
+    <app-user-message [message]="item" [ngClass]="{'highlighted': item.id === sharedMessages.highlightedMessageId}"
+        class="messages-container"></app-user-message>
+    }
+    }
+    }
+    @if (this.sharedMessages.channelSelected && sharedMessages.groupedMessageDates?.length === 0) {
+    <div class="empty-channel-info-container">
+        <span class="empty-channel-info-channel-name">{{ sharedMessages.selectedChannel?.channelName }}</span>
+        <div>
+            @if (creatorId == sharedUser.actualUserID) {
+            <span class="empty-channel-info-channel-text">Du hast </span>
+            } @else {
+            <span class="empty-channel-info-channel-text">{{ creatorName }} hat </span>
+            }
+            <span class="empty-channel-info-channel-text">diesen Channel </span>
+            <span class="empty-channel-info-channel-text">am {{ sharedMessages.selectedChannel?.channelTimeStamp }}
+                erstellt. </span>
+            <span class="empty-channel-info-channel-text">Das ist der Anfang des Channels </span>
+            <span class="empty-channel-info-channel-text-channel">{{ sharedMessages.selectedChannel?.channelName
+                }}.</span>
+        </div>
+    </div>
+    }
+    @if (this.sharedMessages.userSelected && sharedMessages.groupedMessageDates.length == 0) {
+    <div class="empty-channel-info-container">
+        <div class="empty-channel-user-container">
+            <img (click)="openProfileMessage()" src="{{ this.sharedMessages.selectedUser?.picture }}" alt="user image">
+            <span (click)="openProfileMessage()" class="empty-channel-info-user-name">
+                {{ (sharedMessages.selectedUser$ | async)?.name }}
+            </span>
+        </div>
+        @if (this.sharedMessages.selectedUser?.id == sharedUser.actualUserID) {
+        <div>
+            <span class="empty-channel-info-channel-text">Dieser Raum ist nur für dich da. Mache dir Notizen, liste
+                deine To-dos auf oder bewahre Links griffbereit auf. Du kannst hier auch gerne Dinge mit dir selbst
+                besprechen. </span>
+        </div>
+        }@else {
+        <div>
+            <span class="empty-channel-info-channel-text">Diese Unterhaltung findet nur zwischen </span>
+            <span class="empty-channel-info-channel-text-channel">&#64;{{sharedMessages.selectedUser?.displayName}}
+            </span>
+            <span class="empty-channel-info-channel-text">und dir statt. </span>
+        </div>
+        }
+    </div>
+    }
+</section>
