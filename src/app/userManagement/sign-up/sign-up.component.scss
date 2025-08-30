@@ -25,6 +25,13 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
+
+    img {
+        &:hover {
+            border-radius: 50px;
+            background: $background-purple;
+        }
+    }
 }
 
 .login-text {

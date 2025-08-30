@@ -10,7 +10,7 @@
                 <input (input)="nameError = false" placeholder="Name und Nachname" type="text" formControlName="name"
                     class="input-field mail">
                 <img class="input-field-image" src="assets/img/person_filled.svg" alt="">
-                @if (nameError){<span class="error-message">* Bitte Namen mit min 3 Buchstaben angeben</span>}
+                @if (nameError){<span class="error-message">* Bitte Namen mit min 3 Buchstaben angeben.</span>}
             </div>
             <div class="input-field-container">
                 <input (input)="mailError = false" placeholder="beispielname@email.com" type="email"
@@ -31,7 +31,10 @@
                 <input class="privacy-checkbox" type="checkbox" formControlName="privacy"
                     (change)="privacyError = false">
             </div>
-            <span class="privacy-text">Ich stimme der <a href="">Datenschutzerklärung</a> zu</span>
+            <span class="privacy-text">Ich stimme der
+                <a [routerLink]="'/datenschutz'"> Datenschutzerklärung </a>
+                zu.
+            </span>
             @if (privacyError) {
             <span class="error-message-privacy">* Bitte Datenschutzbestimmungen akzeptieren.</span>
             }

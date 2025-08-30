@@ -7,7 +7,7 @@ import { ChangePasswordComponent } from "../../userManagement/change-password/ch
   standalone: true,
   imports: [RouterModule, ChangePasswordComponent],
   templateUrl: './imprint.component.html',
-  styleUrl: './imprint.component.scss'
+  styleUrls: ['./../privacy/privacy.component.scss', './imprint.component.scss']
 })
 export class ImprintComponent {
   constructor(
