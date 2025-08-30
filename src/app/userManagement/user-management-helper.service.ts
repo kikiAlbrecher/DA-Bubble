@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserSharedService } from './userManagement-service';
 import { doc, setDoc, updateDoc, getDoc } from '@angular/fire/firestore';
 import {
-  getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, User as FirebaseUser, signOut,
+  getAuth, GoogleAuthProvider, signInWithRedirect, createUserWithEmailAndPassword, User as FirebaseUser, signOut,
   signInAnonymously
 } from "firebase/auth";
 import { Router } from '@angular/router';
@@ -24,7 +24,7 @@ export class UserManagementHelperService {
     const provider = new GoogleAuthProvider();
 
     try {
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithRedirect(auth, provider);
       await this.handleGoogleLoginSuccess(context, result);
     } catch (error) {
       this.handleGoogleLoginFailure(context);
